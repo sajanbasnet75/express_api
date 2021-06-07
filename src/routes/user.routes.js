@@ -10,4 +10,7 @@ router.get("/", userController.getAllUsers);
 // GET api/users/:id
 router.get("/:id", userController.getUserById);
 
+// POST api/users/
+router.post("/", userController.createUser);
+
 module.exports = router;

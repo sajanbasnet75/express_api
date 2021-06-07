@@ -3,14 +3,14 @@ const routes = require("./routes");
 
 const app = express();
 
-const DB_PORT = process.env.DB_PORT || 5000;
-const DB_HOST = process.env.DB_HOST || "0.0.0.0";
+const APP_PORT = process.env.APP_PORT || 5000;
+const APP_HOST = process.env.APP_HOST || "0.0.0.0";
 
 //middleware
 app.use(express.json());
 
-app.set("port", DB_PORT);
-app.set("host", DB_HOST);
+app.set("port", APP_PORT);
+app.set("host", APP_HOST);
 
 app.use("/api", routes);
 
