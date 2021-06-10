@@ -4,11 +4,16 @@ const getAllUsers = () => {
   return User.fetchAll();
 };
 
-const getUserById = (id) => {
-  return new User({ id })
-    .fetch()
-    .then((user) => user)
-    .catch((err) => err);
+const getUserById = async (id) => {
+  try {
+    const user = await new User({ id }).fetch();
+    return user;
+  } catch (err) {
+    console.log("there was an error");
+    return err;
+  }
+
+  const [data, erro] = await new User({ id }).fetch();
 };
 
 const createUser = (user) => {
