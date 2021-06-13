@@ -12,8 +12,15 @@ const getUserById = async (id) => {
     console.log("there was an error");
     return err;
   }
+};
 
-  const [data, erro] = await new User({ id }).fetch();
+const getUserByEmail = async (email) => {
+  try {
+    const user = await new User({ email }).fetch();
+    return user;
+  } catch (err) {
+    return err;
+  }
 };
 
 const createUser = (user) => {
@@ -29,5 +36,6 @@ const createUser = (user) => {
 module.exports = {
   getAllUsers,
   getUserById,
+  getUserByEmail,
   createUser,
 };
