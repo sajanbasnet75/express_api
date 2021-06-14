@@ -1,5 +1,4 @@
 const { userService } = require("../services");
-const { userValidator } = require("../validations");
 const User = require("../models/user");
 
 const getAllUsers = async (req, res, next) => {

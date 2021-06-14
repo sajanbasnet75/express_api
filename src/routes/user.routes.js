@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const { userController } = require("../controllers");
+const { userValidator } = require("../validations");
 
 // GET api/users
 router.get("/", userController.getAllUsers);
@@ -11,6 +12,11 @@ router.get("/", userController.getAllUsers);
 router.get("/:id", userController.getUserById);
 
 // POST api/users/
-router.post("/", userController.createUser);
+router.post(
+  "/signup",
+  userValidator.checkExistingUser,
+  userValidator.userCreateValidator,
+  userController.createUser
+);
 
 module.exports = router;
