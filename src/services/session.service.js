@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const signInUser = async (sessionParams) => {
   try {
@@ -11,7 +12,8 @@ const signInUser = async (sessionParams) => {
     if (!validPassword) {
       throw new Error();
     }
-    return true;
+    const token = jwt.sign({ id: user.toJSON().id }, process.env.SECRET_TOKEN);
+    return token;
   } catch (err) {
     return "Invalid email or Password";
   }
